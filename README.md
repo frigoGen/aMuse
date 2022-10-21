@@ -6,7 +6,7 @@
 - Museo Archeologico di Napoli
 - Museo Zoologico di Napoli
 - Museo Paleontologico
-##Contributors:
+## Contributors:
 - Serena Palumbo
 - Marta Caliendo
 - Ferdinando Carbone
