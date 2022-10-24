@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct Room2: View {
-    @State private var showView: Bool = false
+    
+    @ObservedObject var vm: ViewModel
+    @Binding var showView: Bool
+    @State var objects: [ObjectsModel] = [
+        
+        ObjectsModel(names: "", image: "quadro1", positionX: 290 , positionY:  460, frame: 140, buttonPosition: 40),
+        ObjectsModel(names: "", image: "quadro2", positionX: 100, positionY:  150, frame: 150, buttonPosition: 40),
+        ObjectsModel(names: "", image: "mensola", positionX: 298, positionY: 190, frame: 160, buttonPosition: 40),
+        ObjectsModel(names: "", image: "lavagna", positionX: 95, positionY:  466, frame: 135, buttonPosition: 40),
+        ObjectsModel(names: "", image: "mensola", positionX: 260, positionY:  310, frame: 160, buttonPosition: 40)
+    ]
     var body: some View {
-        NavigationStack{
+       // NavigationStack{
             ZStack{
                 
                 Color("Color1")
@@ -24,8 +34,18 @@ struct Room2: View {
                 Image("tappeto2")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 276)                    .position(x: 197, y: 645)
+                    .frame(width: 276).position(x: 197, y: 645)
                 ZStack{
+                    
+                    ForEach($vm.objects) { object in
+                        ForEach($vm.objects) {$object in
+                            ObjectsView(showView: $showView, object: $object, selectItem: $vm.selectObject)
+                                .position(x: object.positionX, y: object.positionY)
+                            
+                        }
+                    }
+                }
+                /*ZStack{
                     Image("quadro1")
                         .resizable()
                         .scaledToFit()
@@ -67,8 +87,8 @@ struct Room2: View {
                         .frame(width: 140)
                     // .position(x: 210, y: 380)
                     addButton
-                } .position(x: 300, y: 440)
-                .navigationTitle("My Room")
+                } .position(x: 300, y: 440)*/
+             /*   .navigationTitle("My Room")
                 //per nascondere la toolbar
                 .toolbar(.hidden, for: .navigationBar)
                 //binding richiede il dollaro per richiamare la variabile
@@ -76,13 +96,13 @@ struct Room2: View {
                     Text("gggg")
                     
                 }
-            }
+            }*/
         }
     }
 }
     struct Room2_Previews: PreviewProvider {
         static var previews: some View {
-            Room2()
+            Room2(vm: ViewModel(), showView: .constant(false))
         }
     }
     extension Room2 {

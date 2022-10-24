@@ -5,7 +5,7 @@
 //  Created by Marta Michelle Caliendo on 16/10/22.
 //
 
-import SwiftUI
+/*import SwiftUI
 
 struct Page_control: View {
     @State var Currentpage = 0
@@ -76,4 +76,4 @@ func makeUIView(context: UIViewRepresentableContext<pageControl>) -> UIPageContr
         uiView.currentPage = current 
     }
 }
-    
+   */

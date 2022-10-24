@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    init() {
+    init() { //init() è una funzione che serve a dare priorità nella lettura del codice a quello che gli viene dato, in questo caso la visibilità della tab bar 
         let apparence = UITabBarAppearance()
         apparence.configureWithOpaqueBackground()
         UITabBar.appearance().scrollEdgeAppearance = apparence
@@ -23,7 +23,7 @@ struct ContentView: View {
                     Image(systemName: "figure.mixed.cardio")
                     Text("My Room")
                 }
-            Room2()
+            SecondView()
                 .tabItem {
                     Image(systemName: "tray.full.fill")
                     Text("My Items")
