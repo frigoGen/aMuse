@@ -10,7 +10,7 @@ import SwiftUI
 struct Home2: View {
     @State private var showView: Bool = false
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             //usiamo la scrollview per fixare il bug con .ignores....
             ScrollView(.init()) {
                 TabView{

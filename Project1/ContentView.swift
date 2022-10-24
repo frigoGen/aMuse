@@ -8,10 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+<<<<<<< Updated upstream
     init() {
+=======
+    init() { //init() è una funzione che serve a dare priorità nella lettura del codice a quello che gli viene dato, in questo caso la visibilità della tab bar
+        
+>>>>>>> Stashed changes
         let apparence = UITabBarAppearance()
         apparence.configureWithOpaqueBackground()
         UITabBar.appearance().scrollEdgeAppearance = apparence
+         
         //per cambiare colore alla tab bar:
         //UITabBar.appearance().backgroundColor = UIColor(Color.red)
     }
