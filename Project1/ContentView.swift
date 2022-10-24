@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
     init() {
-=======
-    init() { //init() è una funzione che serve a dare priorità nella lettura del codice a quello che gli viene dato, in questo caso la visibilità della tab bar
+/*    init() { //init() è una funzione che serve a dare priorità nella lettura del codice a quello che gli viene dato, in questo caso la visibilità della tab bar
         
->>>>>>> Stashed changes
+>>>>>>> Stashed changes*/
         let apparence = UITabBarAppearance()
         apparence.configureWithOpaqueBackground()
         UITabBar.appearance().scrollEdgeAppearance = apparence
@@ -47,7 +46,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        //sdfghjkljhgfdzxcvb
     }
 }
 
