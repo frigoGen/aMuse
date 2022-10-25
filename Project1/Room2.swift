@@ -37,14 +37,14 @@ struct Room2: View {
                     .frame(width: 276).position(x: 197, y: 645)
                 ZStack{
                     
-                    ForEach($vm.objects) { object in
-                        ForEach($vm.objects) {$object in
-                            ObjectsView(showView: $showView, object: $object, selectItem: $vm.selectObject)
+                   
+                        ForEach(vm.objects) {object in
+                            ObjectsView(showView: $showView, object: object, selectItem: $vm.selectObject)
                                 .position(x: object.positionX, y: object.positionY)
                             
                         }
                     }
-                }
+                
                 /*ZStack{
                     Image("quadro1")
                         .resizable()

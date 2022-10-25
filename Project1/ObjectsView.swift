@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ObjectsView: View {
     @Binding var showView: Bool
-    @Binding var object: ObjectsModel
+     let object: ObjectsModel
     @Binding var selectItem : ObjectsModel?
     // il binding non si inizializza quindi solo con il
     var body: some View {
@@ -25,6 +25,7 @@ struct ObjectsView: View {
                         .position(x: geo.size.width/2, y: geo.size.height / 2 - object.buttonPosition)
                 } else {
                     Image(systemName: object.names)
+                        .position(x: geo.size.width/2, y: geo.size.height / 2 - object.buttonPosition)
                 }
             }
             
@@ -35,7 +36,7 @@ struct ObjectsView: View {
 //La view è inizialmente statica, perchè prevede solo dati parametri. Per renderla dinamica bisogna parametrizzarla (in questo caso con il binding), cioè : sostituisci gli elementi all'interno della view di riferimento con quelli dell'arrey.  Crea un nuovo @Binding con il nome del model.
 struct ObjectsView_Previews: PreviewProvider {
     static var previews: some View {
-        ObjectsView(showView: .constant(false), object: .constant(ObjectsModel(names: "", image: "quadro1", positionX: 30, positionY: 30, frame: 140, buttonPosition: 40)), selectItem: .constant(ObjectsModel(names: "", image: "quadro1", positionX: 30, positionY: 30, frame: 140, buttonPosition: 40)))
+        ObjectsView(showView: .constant(false), object: ObjectsModel(names: "", image: "quadro1", positionX: 30, positionY: 30, frame: 140, buttonPosition: 40), selectItem: .constant(ObjectsModel(names: "", image: "quadro1", positionX: 30, positionY: 30, frame: 140, buttonPosition: 40)))
     }
 }
 extension ObjectsView {

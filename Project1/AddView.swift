@@ -10,6 +10,7 @@ import SwiftUI
 struct AddView: View {
     @Binding var showView: Bool
     @ObservedObject var vm: ViewModel
+    @Environment (\.dismiss) private var dismiss //nuova variabile environment per il dismiss
     
     //Questa variabile è uguale all'array [] del nostro model
     let items: [ItemsModel] = [
@@ -34,8 +35,8 @@ struct AddView: View {
                 LazyVGrid(columns: columns,alignment: .leading) {
                     ForEach(items) { item in    //per ogni elemento in items crea una view
                         RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.blue)
-                           .frame(width: 100, height: 100)
+                            .fill(Color.blue)
+                            .frame(width: 100, height: 100)
                             .overlay {
                                 Image(item.image)
                                     .resizable()
@@ -48,21 +49,26 @@ struct AddView: View {
                                 if let selectObject =
                                     vm.selectObject {
                                     
-                                    let newItmes: ObjectsModel = ObjectsModel(id: selectObject.id, names: item.image, image: selectObject.image, positionX: selectObject.positionX, positionY: selectObject.positionY, frame: selectObject.frame, buttonPosition: selectObject.buttonPosition)
-                                }//non si può lavorare con i valori nulli, quindi con if let stiamo dicendo al codice di leggere la variabile solo se il valore non è nullo. Altrimenti l'app crasherebbe. Questo è un modo, un altro sarebbe fornire un valore alternativo da utilizzare se il valore è nullo: ?? 10 .
-                            
+                                    if let selectObject = vm.selectObject {
+                                        let newItmes: ObjectsModel = ObjectsModel(id: selectObject.id, names: item.image, image: selectObject.image, positionX: selectObject.positionX, positionY: selectObject.positionY, frame: selectObject.frame, buttonPosition: selectObject.buttonPosition)
+                                        vm.addItem(object: newItmes)
+                                        dismiss()
+                                        
+                                    }//non si può lavorare con i valori nulli, quindi con if let stiamo dicendo al codice di leggere la variabile solo se il valore non è nullo. Altrimenti l'app crasherebbe. Questo è un modo, un altro sarebbe fornire un valore alternativo da utilizzare se il valore è nullo: ?? 10 .
+                                    
+                                }
                             }
                     }
                 }
+                .navigationTitle("Add Items")
+                .navigationBarTitleDisplayMode(.inline)
+                .padding()
             }
-            .navigationTitle("Add Items")
-            .navigationBarTitleDisplayMode(.inline)
-            .padding()
         }
     }
-}
-struct Select_Items_Previews: PreviewProvider {
-    static var previews: some View {
-        AddView(showView: .constant(false), vm: ViewModel())
+    struct Select_Items_Previews: PreviewProvider {
+        static var previews: some View {
+            AddView(showView: .constant(false), vm: ViewModel())
+        }
     }
 }

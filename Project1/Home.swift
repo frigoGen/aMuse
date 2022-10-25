@@ -32,13 +32,12 @@ struct Home: View {
                 .position(x: 196, y: 650)
             ZStack{
                 ///
-                ForEach($vm.objects) {$object in
-                    ObjectsView(showView: $showView, object: $object, selectItem: $vm.selectObject)
+                ForEach(vm.objects) {object in
+                    ObjectsView(showView: $showView, object: object, selectItem: $vm.selectObject)
                         .position(x: object.positionX, y: object.positionY)
                     
                        
                 }
-                
                 
                 
                 /*  ForEach(objects) { object in
